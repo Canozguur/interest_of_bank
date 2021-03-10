@@ -1,17 +1,10 @@
-from kivymd.uix.label import Label
 import requests
 from bs4 import BeautifulSoup
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.card import MDCard
-from kivy.uix.modalview import ModalView
-from kivymd.uix.boxlayout import BoxLayout
-from kivy.properties import StringProperty,BoundedNumericProperty,BooleanProperty
-from kivy.uix.button import ButtonBehavior
-from kivy.uix.image import Image
-
+from kivy.properties import StringProperty
 from kivy.core.window import Window
-Window.size = (350, 625)
 
 
 class card_of_detail_faiz(MDCard):
@@ -25,8 +18,11 @@ class MainScreen(MDScreen):
     pass
 
 
+Window.size = (350, 625)
 class MainApp(MDApp):
-
+    def build(self):
+        self.title = 'Faiz Bulucu'
+        
     def detail_of_bank(self,bank_name):
         pass
 
@@ -72,12 +68,6 @@ class MainApp(MDApp):
                 )
 
     def on_start(self):
-        print(dir(self.root.ids['main_screen'].ids.daily))
-        print(dir(self.root.ids['main_screen']))
-        print(self.root.ids['main_screen'].ids)
-        print(self.root.ids.items)
-        print(self.root.ids['main_screen'].ids['tutar'],"\n")
-
         pass
 
 MainApp().run()
