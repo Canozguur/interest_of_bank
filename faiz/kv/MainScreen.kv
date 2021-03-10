@@ -1,0 +1,132 @@
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint: 1,.12
+            canvas.before:
+                Color:
+                    id : color_of_daily
+                    rgba :(.517, .984, .9764, 1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                size_hint:.8,1
+                text:"FAIZ HESAPLAMA"
+                color: 0,122,122,1
+                font_size: "22sp"
+
+        BoxLayout:
+            size_hint:1,.23
+            orientation: "vertical"
+            BoxLayout:
+                size_hint:1,.15
+            BoxLayout:
+                size_hint:1,.25
+                BoxLayout:
+                    BoxLayout:
+                        size_hint:.05,1
+                    Label:
+                        size_hint:.4,1
+                        text:"Mevduat Tutari"
+                        color: 0,122,122,1
+                        font_size: "18sp"
+                    MDTextFieldRect:
+                        id:tutar
+                        size_hint:.45,.75
+                        pos_hint:{"center_x":.5,"center_y":.5}
+                        hint_text: "Search"
+                        mode: "rectangle"
+                        text:""
+                    BoxLayout:
+                        size_hint:.05,1
+
+            BoxLayout:
+                size_hint:1,.15
+            BoxLayout:
+                size_hint:1,.25
+                BoxLayout:
+                    BoxLayout:
+                        size_hint:.05,1
+                    Label:
+                        size_hint:.4,1
+                        text:"Mevduat Suresi"
+                        color: 0,122,122,1
+                        font_size: "18sp"
+                    MDTextFieldRect:
+                        id:day
+                        size_hint:.45,.75
+                        pos_hint:{"center_x":.5,"center_y":.5}
+                        hint_text: "Search"
+                        mode: "rectangle"
+                        text:""
+                    BoxLayout:
+                        size_hint:.05,1
+        BoxLayout:
+            size_hint:1,.2
+
+            BoxLayout:
+                size_hint:1,1
+                BoxLayout:
+                    size_hint:.1,1
+                MDFillRoundFlatButton:
+                    text:"search"
+                    size_hint:.8,.75
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    on_release: app.find(tutar.text,day.text)
+                BoxLayout:
+                    size_hint:.1,1
+        BoxLayout:
+            size_hint:1,.55
+            id:burasi
+            ScrollView:
+                GridLayout:
+                    # day
+                    id : daily
+                    cols: 1
+                    size_hint_y: None
+                    height : self.minimum_height
+                    row_default_height: "120dp"
+                    row_force_default : True
+
+
+<card_of_detail_faiz>
+    BoxLayout:
+        BoxLayout:
+            size_hint :.4,1
+            MDLabel:
+                padding_x : 17
+                size_hint : .4,1
+                text : root.name_of_bank
+                halign : 'left'
+                font_size: "16sp"
+        BoxLayout:
+            orientation: "vertical"
+            size_hint:.6,1
+            MDLabel:
+                size_hint:1,1
+                text : f"Yillik Faiz Orani:{root.yillik_faiz_orani}"
+                valign:'center'
+                font_size: "12sp"
+            MDLabel:
+                size_hint:1,1
+                text : f"Net Getiri::{root.net_getiri}"
+
+                valign:'center'
+                font_size: "12sp"
+            BoxLayout:
+
+                MDLabel:
+                    size_hint:.85,1
+                    text : f"Toplam Kazanc:{root.toplam_kazanc}"
+                    color: (.0003, .90, .0003, 1)
+                    valign:'center'
+                    font_size: "12sp"
+                MDFillRoundFlatButton:
+                    text:"detail"
+                    size_hint:.5,.8
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    on_release: app.detail_of_bank(root.name_of_bank)
+                BoxLayout:
+                    size_hint:.05,1
+
