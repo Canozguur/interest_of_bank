@@ -1,0 +1,31 @@
+<DetailScreen>:
+    BoxLayout:
+        BoxLayout:
+            orientation:"vertical"
+
+            BoxLayout:
+                size_hint:1,.2
+                Label:
+                    id: bank
+                    text:""
+                    font_size: "18sp"
+                    valign:'center'
+                    color: (0, 0, 0, 1)
+
+            BoxLayout:
+                size_hint:1,.8
+                id : data
+            BoxLayout:
+                size_hint:1,.15
+                BoxLayout:
+                    size_hint:.2,1
+                    MDFillRoundFlatButton:
+                        text:"back"
+                        size_hint:.5,.8
+                        pos_hint:{"center_x":.5,"center_y":.5}
+                        on_release: app.back()
+                BoxLayout:
+                    size_hint:.8,1
+
+
+
